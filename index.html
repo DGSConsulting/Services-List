@@ -3,175 +3,203 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DGS Consulting - Pricing</title>
+<title>DGS Consulting - Pricing & Tools</title>
 <style>
-* {margin:0;padding:0;box-sizing:border-box;}
-body {font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;background: linear-gradient(135deg,#0f766e 0%,#14b8a6 100%);color:#333;line-height:1.6;padding:40px 20px;min-height:100vh;}
-.container {max-width:1400px;margin:0 auto;}
-header {text-align:center;margin-bottom:60px;color:white;}
-header h1 {font-size:3em;margin-bottom:15px;font-weight:700;}
-header p {font-size:1.3em;opacity:0.95;}
-.pricing-grid {display:flex;flex-wrap:wrap;gap:30px;justify-content:center;margin-bottom:60px;}
-.card {display:flex;flex-direction:column;justify-content:space-between;border-radius:0.75rem;background-color:white;width:300px;height:370px;box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);cursor:pointer;transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease, opacity 0.6s;opacity:0;transform:translateY(30px);}
-.card.in-view {opacity:1;transform:translateY(0);}
-.card:hover {transform:translateY(-10px);box-shadow:0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1);border:2px solid #14b8a6;}
-.header {position:relative;background-clip:border-box;margin:1.5rem 1rem 0 1rem;border-radius:0.75rem;background-color:#0f766e;box-shadow:0 10px 15px -3px rgba(15,118,110,.4),0 4px 6px -4px rgba(15,118,110,.4);height:14rem;display:flex;flex-direction:column;justify-content:center;align-items:center;color:white;padding:1rem;transition: background 0.3s ease;}
-.header.featured {background: linear-gradient(135deg,#0f766e 0%,#14b8a6 100%);}
-.header.premium {background: linear-gradient(135deg,#4ade80 0%,#22c55e 100%);}
-.price {font-size:3em;font-weight:800;margin-bottom:0.5rem;}
-.price-range {font-size:2em;font-weight:800;}
-.time-tag {font-size:0.85em;opacity:0.9;font-weight:300;}
-.info {border:none;padding:1.5rem;text-align:center;flex-grow:1;display:flex;flex-direction:column;justify-content:center;}
-.title {color:#263238;letter-spacing:0;line-height:1.375;font-weight:600;font-size:1.25rem;margin-bottom:0.5rem;}
-.description {color:#607d8b;font-size:0.875rem;line-height:1.5;}
-.footer {padding:0.75rem;border:1px solid #ecf0f1;display:flex;align-items:center;justify-content:space-between;background-color:rgba(20,184,166,0.1);}
-.tag {font-weight:300;font-size:.75rem;display:block;color:#607d8b;}
-.action {user-select:none;border:none;outline:none;box-shadow:0 4px 6px -1px rgba(15,118,110,.4),0 2px 4px -2px rgba(15,118,110,.4);color:white;text-transform:uppercase;font-weight:700;font-size:.75rem;padding:0.75rem 1.5rem;background-color:#0f766e;border-radius:0.5rem;cursor:pointer;transition: transform 0.2s ease, box-shadow 0.2s ease;}
-.action:hover {transform:scale(1.05);box-shadow:0 10px 15px -3px rgba(15,118,110,.4),0 4px 6px -4px rgba(15,118,110,.4);}
-.action.featured {background:linear-gradient(135deg,#0f766e 0%,#14b8a6 100%);}
-.action.premium {background:linear-gradient(135deg,#4ade80 0%,#22c55e 100%);}
-.journey-section {background:white;border-radius:20px;padding:50px 40px;margin-top:60px;box-shadow:0 10px 40px rgba(0,0,0,0.1);}
-.journey-section h2 {text-align:center;font-size:2.5em;margin-bottom:40px;color:#2d3748;}
-.journey-steps {display:flex;flex-wrap:wrap;gap:40px;justify-content:center;margin-top:40px;}
-.journey-step {text-align:center;padding:30px;border-radius:15px;background:#f7fafc;transition:transform 0.3s ease,opacity 0.6s;opacity:0;transform:translateY(30px);max-width:350px;}
-.journey-step.in-view {opacity:1;transform:translateY(0);}
-.journey-step:hover {transform:translateY(-5px);}
-.step-number {width:60px;height:60px;background:linear-gradient(135deg,#0f766e 0%,#14b8a6 100%);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8em;font-weight:bold;margin:0 auto 20px;}
-.journey-step h3 {font-size:1.4em;margin-bottom:10px;color:#2d3748;}
-.journey-step p {color:#718096;margin-bottom:10px;}
-.journey-step .price-tag {font-size:1.5em;font-weight:bold;color:#0f766e;margin-top:15px;}
-.modal {display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background-color:rgba(0,0,0,0.5);animation:fadeIn 0.3s ease;}
-.modal-content {background-color:white;margin:5% auto;padding:40px;border-radius:20px;max-width:600px;box-shadow:0 20px 60px rgba(0,0,0,0.3);animation:slideIn 0.3s ease;}
-@keyframes fadeIn {from {opacity:0;}to{opacity:1;}}
-@keyframes slideIn {from{transform:translateY(-50px);opacity:0;}to{transform:translateY(0);opacity:1;}}
-.modal h3 {color:#2d3748;margin-bottom:20px;font-size:2em;}
-.modal-body {margin-bottom:30px;}
-.modal-body h4 {color:#0f766e;margin-top:20px;margin-bottom:10px;}
-.modal-body ul {list-style-position:inside;color:#4a5568;margin-left:10px;}
-.modal-body li {margin-bottom:8px;}
-.close-btn {background:linear-gradient(135deg,#0f766e 0%,#14b8a6 100%);color:white;border:none;padding:12px 30px;border-radius:8px;font-weight:600;cursor:pointer;font-size:1em;}
-.close-btn:hover {opacity:0.9;}
-#consultation {margin-top:60px;padding:40px;background:#f0fdfa;border-radius:20px;max-width:600px;margin-left:auto;margin-right:auto;box-shadow:0 10px 40px rgba(0,0,0,0.1);}
-#consultation button:hover {animation: pulse 1s infinite;}
-@keyframes pulse {0%{transform:scale(1);}50%{transform:scale(1.05);}100%{transform:scale(1);}}
-@media (max-width:768px){header h1{font-size:2em;}header p{font-size:1.1em;}.pricing-grid{flex-direction:column;align-items:center;}.modal-content{margin:10% 20px;padding:30px 20px;}}
+  * {margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;}
+  body {background:#f7fafc;color:#1f2937;line-height:1.6;padding:40px 20px;}
+  h1,h2,h3,h4,p {margin-bottom:15px;}
+  h1,h2 {color:#0f766e;}
+  .container {max-width:1400px;margin:0 auto;}
+
+  /* Header */
+  header{text-align:center;margin-bottom:50px;}
+  header h1{font-size:2.5em;font-weight:700;}
+  header p{font-size:1.2em;color:#374151;}
+
+  /* Pricing Grid */
+  .pricing-grid{display:flex;flex-wrap:wrap;gap:25px;justify-content:center;margin-bottom:60px;}
+  .card{display:flex;flex-direction:column;justify-content:space-between;background:#fff;border-radius:12px;box-shadow:0 4px 6px rgba(0,0,0,.1);width:300px;min-height:400px;transition:transform 0.3s ease,box-shadow 0.3s ease;}
+  .card:hover{transform:translateY(-8px);box-shadow:0 20px 25px rgba(0,0,0,.15);}
+  .header{background:#0f766e;color:white;padding:1rem 0;border-radius:12px 12px 0 0;text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center;height:140px;}
+  .header.featured{background:#14b8a6;}
+  .header.premium{background:linear-gradient(135deg,#14b8a6 0%,#0f766e 100%);}
+  .price{font-size:2.5em;font-weight:800;}
+  .price-range{font-size:1.8em;font-weight:700;}
+  .time-tag{font-size:.85em;font-weight:300;margin-top:5px;}
+
+  .info{padding:1.5rem;text-align:center;flex-grow:1;display:flex;flex-direction:column;justify-content:center;}
+  .title{font-size:1.25rem;font-weight:600;color:#111827;margin-bottom:8px;}
+  .description{font-size:.9rem;color:#6b7280;line-height:1.4;}
+
+  .footer{padding:0.75rem 1rem;border-top:1px solid #e5e7eb;background:rgba(15,118,110,.05);display:flex;justify-content:space-between;align-items:center;}
+  .tag{font-size:.75rem;color:#6b7280;font-weight:400;}
+  .action{border:none;padding:.7rem 1.5rem;border-radius:8px;background:#0f766e;color:white;text-transform:uppercase;font-weight:700;font-size:.8rem;cursor:pointer;transition:all .2s ease;}
+  .action:hover{transform:scale(1.05);box-shadow:0 8px 15px rgba(15,118,110,.3);}
+  .action.featured{background:#14b8a6;}
+  .action.premium{background:linear-gradient(135deg,#14b8a6 0%,#0f766e 100%);}
+
+  /* Journey Section */
+  .journey-section{background:white;border-radius:20px;padding:50px 40px;margin-top:50px;box-shadow:0 10px 40px rgba(0,0,0,0.08);}
+  .journey-section h2{text-align:center;font-size:2em;margin-bottom:25px;color:#0f766e;}
+  .journey-steps{display:flex;flex-wrap:wrap;gap:30px;justify-content:center;}
+  .journey-step{background:#f1f5f9;padding:25px;border-radius:15px;text-align:center;max-width:320px;transition:transform 0.3s ease;}
+  .journey-step:hover{transform:translateY(-5px);}
+  .step-number{width:50px;height:50px;background:#0f766e;color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5em;font-weight:bold;margin:0 auto 15px;}
+  .journey-step h3{font-size:1.2rem;color:#111827;margin-bottom:8px;}
+  .journey-step p{color:#4b5563;font-size:.9rem;}
+  .price-tag{color:#14b8a6;font-weight:700;margin-top:10px;font-size:1.2em;}
+
+  /* Tools Section */
+  .tools-section{margin-top:60px;text-align:center;}
+  .tools-section h2{color:#0f766e;font-size:2em;margin-bottom:30px;}
+  .tools-grid{display:flex;flex-wrap:wrap;gap:25px;justify-content:center;}
+  .tool-card{background:#fff;border-radius:12px;box-shadow:0 4px 6px rgba(0,0,0,.1);width:280px;padding:25px;text-align:center;transition:transform 0.3s ease;}
+  .tool-card:hover{transform:translateY(-5px);box-shadow:0 15px 25px rgba(0,0,0,.15);}
+  .tool-icon{font-size:2.2em;margin-bottom:15px;}
+  .tool-card h3{font-size:1.25rem;color:#111827;margin-bottom:10px;}
+  .tool-card p{font-size:.9rem;color:#6b7280;margin-bottom:15px;}
+  .tool-card button{border:none;padding:.6rem 1.3rem;border-radius:8px;background:#14b8a6;color:white;font-weight:700;text-transform:uppercase;cursor:pointer;transition:all .2s ease;}
+  .tool-card button:hover{transform:scale(1.05);box-shadow:0 6px 12px rgba(20,184,166,.3);}
+
+  /* Modal */
+  .modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.5);}
+  .modal-content{background:white;margin:5% auto;padding:30px;border-radius:20px;max-width:600px;box-shadow:0 20px 60px rgba(0,0,0,0.3);}
+  .close-btn{background:#0f766e;color:white;padding:10px 25px;border-radius:8px;font-weight:600;border:none;cursor:pointer;margin-top:20px;}
+  .close-btn:hover{opacity:.9;}
+
+  /* Form */
+  #consultation{margin-top:50px;text-align:center;}
+  #consultation form{display:flex;flex-direction:column;gap:15px;max-width:500px;margin:0 auto;}
+  #consultation input,#consultation textarea{padding:10px;border-radius:8px;border:1px solid #d1d5db;width:100%;}
+  #consultBtn{padding:.75rem 1.5rem;background:#0f766e;color:white;border:none;border-radius:8px;font-weight:700;text-transform:uppercase;cursor:pointer;transition:all .2s ease;}
+  #consultBtn:hover{transform:scale(1.05);box-shadow:0 6px 12px rgba(15,118,110,.3);}
+  #consultBtn.glow{animation:glowPulse 1.2s infinite alternate;}
+  @keyframes glowPulse{0%{box-shadow:0 0 10px #14b8a6,0 0 20px #14b8a6;}50%{box-shadow:0 0 20px #14b8a6,0 0 30px #14b8a6;}100%{box-shadow:0 0 10px #14b8a6,0 0 20px #14b8a6;}}
+
+  @media(max-width:768px){.pricing-grid,.journey-steps,.tools-grid{flex-direction:column;align-items:center;}.card,.tool-card{width:90%;min-height:auto;}.header{height:auto;padding:1rem;}}
 </style>
 </head>
 <body>
 <div class="container">
-<header>
-<h1>Transform Your Business Operations</h1>
-<p>Stop wasting time. Start reclaiming your hours and profits.</p>
-</header>
+  <header>
+    <h1>Process & Tech Optimization for Small Businesses</h1>
+    <p>Practical solutions to streamline operations, track results, and improve efficiency.</p>
+  </header>
 
-<div class="pricing-grid">
-<!-- Pricing cards -->
-<div class="card" onclick="scrollToConsultation('tech-audit')">
-<div class="header"><div class="price">$99</div><div class="time-tag">~1 hour</div></div>
-<div class="info"><div class="title">Tech Stack Red Flag Audit</div><div class="description">Stop paying for redundant software. Get 3 immediate fixes + subscription savings.</div></div>
-<div class="footer"><span class="tag">Quick Win</span><button class="action" onclick="event.stopPropagation(); showModal('tech-audit')">Learn More</button></div>
-</div>
+  <!-- Pricing -->
+  <div class="pricing-grid">
+    <div class="card">
+      <div class="header"><div class="price">$99</div><div class="time-tag">~1 hour</div></div>
+      <div class="info"><div class="title">Tech Stack Red Flag Audit</div><div class="description">Stop paying for redundant software. Get 3 immediate fixes + subscription savings.</div></div>
+      <div class="footer"><span class="tag">Quick Win</span><button class="action" onclick="showModal('tech-audit')">Learn More</button></div>
+    </div>
+    <div class="card">
+      <div class="header"><div class="price">$149</div><div class="time-tag">~1-2 hours</div></div>
+      <div class="info"><div class="title">3-Template Automation Toolkit</div><div class="description">Stop typing the same emails. Save 5+ hours per month with custom templates.</div></div>
+      <div class="footer"><span class="tag">Time Saver</span><button class="action" onclick="showModal('templates')">Learn More</button></div>
+    </div>
+    <div class="card">
+      <div class="header featured"><div class="price">$495</div><div class="time-tag">Deep Analysis</div></div>
+      <div class="info"><div class="title">Profit-Hour Recovery Audit</div><div class="description">Identify where 25+ hours per month vanish. Get a roadmap to reclaim them.</div></div>
+      <div class="footer"><span class="tag">Most Popular</span><button class="action featured" onclick="showModal('audit')">Learn More</button></div>
+    </div>
+    <div class="card">
+      <div class="header"><div class="price">$199</div><div class="time-tag">~2 hours</div></div>
+      <div class="info"><div class="title">3-KPI Clarity Session</div><div class="description">Focus on the 3 metrics that actually drive profit.</div></div>
+      <div class="footer"><span class="tag">Data Focus</span><button class="action" onclick="showModal('kpi-clarity')">Learn More</button></div>
+    </div>
+    <div class="card">
+      <div class="header premium"><div class="price-range">$4K-$8K+</div><div class="time-tag">6-Week Transform</div></div>
+      <div class="info"><div class="title">Workflow Liberation Program</div><div class="description">Complete system overhaul. Save 120+ hours monthly. Measurable ROI.</div></div>
+      <div class="footer"><span class="tag">Full Solution</span><button class="action premium" onclick="showModal('workflow')">Learn More</button></div>
+    </div>
+    <div class="card">
+      <div class="header"><div class="price">$250</div><div class="time-tag">This week</div></div>
+      <div class="info"><div class="title">90-Minute Power Session</div><div class="description">Fix your most annoying task TOGETHER in real-time. 5+ hours saved guaranteed.</div></div>
+      <div class="footer"><span class="tag">Instant Fix</span><button class="action" onclick="showModal('power-session')">Learn More</button></div>
+    </div>
+  </div>
 
-<div class="card" onclick="scrollToConsultation('templates')">
-<div class="header"><div class="price">$149</div><div class="time-tag">~1-2 hours</div></div>
-<div class="info"><div class="title">3-Template Automation Toolkit</div><div class="description">Stop typing the same emails. Save 5+ hours per month with custom templates.</div></div>
-<div class="footer"><span class="tag">Time Saver</span><button class="action" onclick="event.stopPropagation(); showModal('templates')">Learn More</button></div>
-</div>
+  <!-- Tools -->
+  <div class="tools-section">
+    <h2>Our Tools</h2>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-icon">🔍</div>
+        <h3>ROI Calculator</h3>
+        <p>Instantly calculate the financial impact of your improvements.</p>
+        <button>Try Now</button>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">📄</div>
+        <h3>Process Documentation</h3>
+        <p>Document workflows and SOPs effortlessly.</p>
+        <button>Try Now</button>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">🧭</div>
+        <h3>Business Audit</h3>
+        <p>Identify bottlenecks and growth opportunities in minutes.</p>
+        <button>Try Now</button>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">📊</div>
+        <h3>KPI Dashboard Example</h3>
+        <p>Track metrics like efficiency, tasks completed, savings, and projects.</p>
+        <button>Try Now</button>
+      </div>
+    </div>
+  </div>
 
-<div class="card" onclick="scrollToConsultation('kpi-clarity')">
-<div class="header"><div class="price">$199</div><div class="time-tag">~2 hours</div></div>
-<div class="info"><div class="title">3-KPI Clarity Session</div><div class="description">Stop tracking everything. Focus on the 3 metrics that actually drive profit.</div></div>
-<div class="footer"><span class="tag">Data Focus</span><button class="action" onclick="event.stopPropagation(); showModal('kpi-clarity')">Learn More</button></div>
-</div>
+  <!-- Journey -->
+  <div class="journey-section">
+    <h2>Your Journey to Freedom</h2>
+    <div class="journey-steps">
+      <div class="journey-step"><div class="step-number">1</div><h3>Quick Win</h3><p>Start with a low-risk audit or toolkit to see immediate results.</p><div class="price-tag">$99 - $199</div></div>
+      <div class="journey-step"><div class="step-number">2</div><h3>Full Diagnosis</h3><p>Discover the true scale and cost of inefficiencies across your operation.</p><div class="price-tag">$495</div></div>
+      <div class="journey-step"><div class="step-number">3</div><h3>Complete Transformation</h3><p>Systematic overhaul delivering 120+ hours saved monthly and measurable ROI.</p><div class="price-tag">$4K - $8K+</div></div>
+    </div>
+  </div>
 
-<div class="card" onclick="scrollToConsultation('audit')">
-<div class="header featured"><div class="price">$495</div><div class="time-tag">Deep Analysis</div></div>
-<div class="info"><div class="title">Profit-Hour Recovery Audit</div><div class="description">Identify where 25+ hours per month vanish. Get a roadmap to reclaim them.</div></div>
-<div class="footer"><span class="tag">Most Popular</span><button class="action featured" onclick="event.stopPropagation(); showModal('audit')">Learn More</button></div>
-</div>
-
-<div class="card" onclick="scrollToConsultation('power-session')">
-<div class="header"><div class="price">$250</div><div class="time-tag">This week</div></div>
-<div class="info"><div class="title">90-Minute Power Session</div><div class="description">Fix your most annoying task TOGETHER in real-time. 5+ hours saved guaranteed.</div></div>
-<div class="footer"><span class="tag">Instant Fix</span><button class="action" onclick="event.stopPropagation(); showModal('power-session')">Learn More</button></div>
-</div>
-
-<div class="card" onclick="scrollToConsultation('workflow')">
-<div class="header premium"><div class="price-range">$4K-$8K+</div><div class="time-tag">6-Week Transform</div></div>
-<div class="info"><div class="title">Workflow Liberation Program</div><div class="description">Complete system overhaul. Save 120+ hours monthly. Measurable ROI.</div></div>
-<div class="footer"><span class="tag">Full Solution</span><button class="action premium" onclick="event.stopPropagation(); showModal('workflow')">Learn More</button></div>
-</div>
-</div>
-
-<!-- Journey Section -->
-<div class="journey-section">
-<h2>Your Journey to Freedom</h2>
-<p style="text-align:center;color:#718096;font-size:1.2em;margin-bottom:20px;">Most clients follow this path — starting small, building trust, then transforming everything.</p>
-<div class="journey-steps">
-<div class="journey-step">
-<div class="step-number">1</div>
-<h3>Quick Win</h3>
-<p><strong>State:</strong> Skeptical, needs proof</p>
-<p>Start with a low-risk audit or toolkit to see immediate results and build trust.</p>
-<div class="price-tag">$99 - $199</div>
-</div>
-<div class="journey-step">
-<div class="step-number">2</div>
-<h3>Full Diagnosis</h3>
-<p><strong>State:</strong> Acknowledges the problem</p>
-<p>Discover the true scale and cost of inefficiencies across your entire operation.</p>
-<div class="price-tag">$250 - $495</div>
-</div>
-<div class="journey-step">
-<div class="step-number">3</div>
-<h3>Complete Transformation</h3>
-<p><strong>State:</strong> Ready to solve it</p>
-<p>Systematic overhaul delivering 120+ hours saved monthly and measurable ROI.</p>
-<div class="price-tag">$4K - $8K+</div>
-</div>
-</div>
-</div>
-
-<!-- Consultation Form -->
-<div id="consultation">
-<h2 style="text-align:center;color:#0f766e;margin-bottom:20px;">Book Your Consultation</h2>
-<form action="https://formspree.io/f/xldpkrpb" method="POST">
-<label>Your email:<input type="email" name="email" required></label>
-<label>Your message:<textarea name="message" required></textarea></label>
-<button type="submit">Send</button>
-</form>
+  <!-- Consultation -->
+  <div id="consultation">
+    <h2>Book Your Consultation</h2>
+    <form action="https://formspree.io/f/xldpkrpb" method="POST">
+      <input type="email" name="email" placeholder="Your email" required>
+      <textarea name="message" placeholder="Your message" required></textarea>
+      <button type="submit" id="consultBtn">Send</button>
+    </form>
+  </div>
 </div>
 
 <!-- Modal -->
 <div id="serviceModal" class="modal" onclick="closeModal(event)">
-<div class="modal-content" onclick="event.stopPropagation()">
-<div id="modalBody"></div>
-<button class="close-btn" onclick="closeModal()">Close</button>
-</div>
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <div id="modalBody"></div>
+    <button class="close-btn" onclick="closeModal()">Close</button>
+  </div>
 </div>
 
 <script>
 const serviceDetails = {
-'tech-audit':{title:'Tech Stack Red Flag Audit',price:'$99',pain:'Paying for redundant software. Apps don\'t talk to each other. Powerful tools used for basic functions.',promise:'Stop paying for software you don\'t need and start using the tools you already have, correctly.',deliverables:['1-Page "Tech Red Flag Report" identifying your top 3 issues','Redundancy analysis with subscription savings','Integration gaps and easy fixes','Underutilized features you\'re already paying for','Simple action checklist'],upsell:'If tech issues run deep → Profit-Hour Recovery Audit'},
-'templates':{title:'3-Template Automation Toolkit',price:'$149',pain:'Wasting 5-10 minutes every day re-typing the same emails and messages.',promise:'Stop typing, start selling. Save 5+ hours per month by automating your top 3 repetitive communications.',deliverables:['3 customized, professionally written templates','Implementation checklist for your specific system','5-minute instructional video','Ready-to-use merge fields and CTAs'],upsell:'Templates reveal deeper issues → Profit-Hour Recovery Audit'},
-'power-session':{title:'90-Minute Power Session',price:'$250',pain:'"I waste 2 hours every Monday doing [thing]" — Need ONE problem solved RIGHT NOW.',promise:'We fix your most annoying task TOGETHER in real-time. Guaranteed to save 5+ hours per month or free.',deliverables:['Live 90-minute problem-solving session','Implementation done WITH you on the call','Full session recording','One-page solution cheat sheet','15-minute follow-up call in 7 days'],upsell:'Love the results? → Full Profit-Hour Recovery Audit'},
-'kpi-clarity':{title:'3-KPI Clarity Session',price:'$199',pain:'Overwhelmed by data. Tracking the wrong metrics. Unsure what actually drives profit.',promise:'Stop guessing and start growing. Know the three numbers that matter most to your profit.',deliverables:['45-minute discovery call to align goals with metrics','3-KPI Tracker Template (Google Sheet/Excel)','15-minute video explaining why these 3 metrics matter','Decision Dashboard Blueprint'],upsell:'Need automated tracking? → Workflow Liberation Program'},
-'audit':{title:'Profit-Hour Recovery Audit',price:'$495',pain:'Overworked, sacrificing evenings/weekends to admin tasks. The business is running YOU.',promise:'Guaranteed to identify where 25+ hours per month are being wasted and what it\'s costing you.',deliverables:['1-Page "Leak Detection Report" quantifying your top 3 bottlenecks','Cost analysis (hours + dollars) of each bottleneck','90-minute Action Review session','Immediate Action Checklist (3-5 quick wins)','Roadmap for systematic improvement'],upsell:'Ready to fix everything? → Workflow Liberation Program'},
-'workflow':{title:'Workflow Liberation Program',price:'$4,000 - $8,000+',pain:'Need full recovery of lost administrative time. System stability. Remove yourself from tedious tasks.',promise:'Complete system overhaul delivering 120+ hours saved per month and measurable ROI.',deliverables:['<strong>Phase 1:</strong> Deep Dive & Strategy (Map As-Is & To-Be)','<strong>Phase 2:</strong> Tech Implementation (Configure, integrate, migrate)','<strong>Phase 3:</strong> Deployment & Training (Staff/owner training, testing)','<strong>Phase 4:</strong> Optimization & Handover (Final ROI report)','Workflow Strategy Blueprint','New Process Job Aids','Ongoing optimization support'],upsell:'Result: Measurable reduction in time spent, $23K+ annual savings realized'}
+  'tech-audit': {title:'Tech Stack Red Flag Audit',price:'$99',pain:'Paying for redundant software.',promise:'Stop paying for software you don’t need.',deliverables:['1-Page "Tech Red Flag Report"','Redundancy analysis','Integration gaps','Underutilized features','Simple action checklist'],upsell:'Profit-Hour Recovery Audit'},
+  'templates': {title:'3-Template Automation Toolkit',price:'$149',pain:'Wasting 5-10 min/day retyping emails.',promise:'Save 5+ hours/month automating communications.',deliverables:['3 customized templates','Implementation checklist','5-min instructional video','Merge fields & CTAs'],upsell:'Profit-Hour Recovery Audit'},
+  'power-session': {title:'90-Minute Power Session',price:'$250',pain:'One annoying task slowing you down.',promise:'Fix it TOGETHER in real-time. Guaranteed 5+ hours saved.',deliverables:['Live 90-min session','Implementation on call','Session recording','1-page cheat sheet','15-min follow-up'],upsell:'Full Profit-Hour Recovery Audit'},
+  'kpi-clarity': {title:'3-KPI Clarity Session',price:'$199',pain:'Tracking wrong metrics.',promise:'Know the three numbers that matter most.',deliverables:['45-min discovery call','3-KPI tracker template','15-min explanation video','Decision dashboard blueprint'],upsell:'Workflow Liberation Program'},
+  'audit': {title:'Profit-Hour Recovery Audit',price:'$495',pain:'Overworked admin tasks.',promise:'Identify 25+ lost hours/month.',deliverables:['1-Page Leak Detection Report','Cost analysis','90-min Action Review','Immediate Action Checklist','Roadmap for improvement'],upsell:'Workflow Liberation Program'},
+  'workflow': {title:'Workflow Liberation Program',price:'$4K-$8K+',pain:'Manual processes killing productivity.',promise:'Save 120+ hours per month.',deliverables:['Workflow mapping','Automation setup','Process documentation','Team training','ROI Dashboard'],upsell:'Continuous Support'}
 };
 
-function showModal(id){
-const service=serviceDetails[id];const modalBody=document.getElementById('modalBody');
-let html=`<h3>${service.title}</h3><div class="modal-body"><p><strong>Pain:</strong> ${service.pain}</p><p><strong>Promise:</strong> ${service.promise}</p><h4>Deliverables:</h4><ul>`;
-service.deliverables.forEach(d=>{html+=`<li>${d}</li>`});html+=`</ul><p><strong>Upsell:</strong> ${service.upsell}</p></div>`;modalBody.innerHTML=html;document.getElementById('serviceModal').style.display='block';
+function showModal(service){ 
+  const modal = document.getElementById('serviceModal');
+  const body = document.getElementById('modalBody');
+  const data = serviceDetails[service];
+  body.innerHTML = `<h2>${data.title}</h2><p><strong>Price:</strong> ${data.price}</p><p><strong>Pain:</strong> ${data.pain}</p><p><strong>Promise:</strong> ${data.promise}</p><ul>${data.deliverables.map(d=>`<li>${d}</li>`).join('')}</ul><p><em>Upsell: ${data.upsell}</em></p>`;
+  modal.style.display='block';
 }
-function closeModal(e){if(e){if(e.target.id==='serviceModal'){document.getElementById('serviceModal').style.display='none';}}else{document.getElementById('serviceModal').style.display='none';}}
-function scrollToConsultation(id){document.getElementById('consultation').scrollIntoView({behavior:'smooth'});}
 
-// Scroll fade-in animations
-const cards=document.querySelectorAll('.card,.journey-step');
-const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in-view');}})},{threshold:0.2});
-cards.forEach(card=>observer.observe(card));
+function closeModal(event){document.getElementById('serviceModal').style.display='none';}
+document.addEventListener('scroll',function(){const btn=document.getElementById('consultBtn');const rect=btn.getBoundingClientRect();if(rect.top<window.innerHeight&&rect.bottom>=0){btn.classList.add('glow');}else{btn.classList.remove('glow');}});
 </script>
 </body>
 </html>
