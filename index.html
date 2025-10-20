@@ -11,12 +11,12 @@
   header { text-align:center; margin-bottom:60px; }
   header h1 { font-size:3em; margin-bottom:15px; font-weight:700; color:#2d4f36; }
   header p { font-size:1.3em; color:#2d4f36; opacity:0.85; }
-  
+
   /* Pricing Grid */
   .pricing-grid { display:flex; flex-wrap:wrap; gap:30px; justify-content:center; margin-bottom:60px; }
-  .card { display:flex; flex-direction:column; justify-content:space-between; border-radius:0.75rem; background-color:white; width:320px; min-height:380px; box-shadow:0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; }
-  .card:hover { transform: translateY(-10px); box-shadow:0 20px 25px rgba(0,0,0,0.1); }
-  .header { position:relative; border-radius:0.75rem; height:140px; display:flex; flex-direction:column; justify-content:center; align-items:center; color:white; padding:1rem; background:linear-gradient(135deg, #2d4f36 0%, #3c6f4f 100%); box-shadow:0 4px 6px rgba(45,79,54,0.3); }
+  .card { display:flex; flex-direction:column; justify-content:space-between; border-radius:0.75rem; background-color:white; width:320px; min-height:380px; box-shadow:0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.6s; opacity:0; }
+  .card.visible { opacity:1; transform: translateY(0); }
+  .card-header { position:relative; border-radius:0.75rem; height:140px; display:flex; flex-direction:column; justify-content:center; align-items:center; color:white; padding:1rem; background:linear-gradient(135deg, #2d4f36 0%, #3c6f4f 100%); box-shadow:0 4px 6px rgba(45,79,54,0.3); }
   .price { font-size:2.8em; font-weight:800; margin-bottom:0.3rem; }
   .time-tag { font-size:0.85em; font-weight:300; opacity:0.9; }
   .info { padding:1.5rem; text-align:center; flex-grow:1; display:flex; flex-direction:column; justify-content:center; }
@@ -54,6 +54,12 @@
   .sticky-cta { position:sticky; bottom:20px; left:50%; transform:translateX(-50%); z-index:100; display:inline-block; animation:highlightPulse 2s infinite; }
   @keyframes highlightPulse { 0%,100%{ transform:translateX(-50%) scale(1); } 50%{ transform:translateX(-50%) scale(1.05); } }
 
+  /* Footer */
+  footer { text-align:center; padding:40px 20px; background:#2d4f36; color:white; border-radius:15px; margin-top:40px; }
+  footer p { margin:0; line-height:2; font-size:1em; }
+  footer a.footer-button { color:white; margin:0 10px; text-decoration:none; font-weight:600; transition:opacity 0.2s; }
+  footer a.footer-button:hover { opacity:0.8; }
+
   @media(max-width:768px){ .pricing-grid { flex-direction:column; align-items:center; } .modal-content { margin:10% 20px; padding:30px 20px; } }
 </style>
 </head>
@@ -66,72 +72,39 @@
     <p>Practical solutions to streamline operations, track results, and improve efficiency.</p>
   </header>
 
-  <!-- Pricing Grid: Row 1 - Quick Wins -->
+  <!-- Top Row: 3 Cards -->
   <div class="pricing-grid">
-    <div class="card">
-      <div class="header"><div class="price">$99</div><div class="time-tag">~1 hr</div></div>
-      <div class="info"><div class="title">Tech Stack Red Flag Audit</div>
-        <div class="description">Stop paying for redundant software. Get 3 immediate fixes + subscription savings.</div>
-      </div>
-      <div class="footer"><span class="tag">Quick Win</span>
-        <button class="action" onclick="showModal('tech-audit')">Learn More</button>
-      </div>
+    <div class="card"><div class="card-header"><div class="price">$99</div><div class="time-tag">~1 hr</div></div>
+      <div class="info"><div class="title">Tech Stack Red Flag Audit</div><div class="description">Stop paying for redundant software. Get 3 immediate fixes + subscription savings.</div></div>
+      <div class="footer"><span class="tag">Quick Win</span><button class="action" onclick="showModal('tech-audit')">Learn More</button></div>
     </div>
-
-    <div class="card">
-      <div class="header"><div class="price">$149</div><div class="time-tag">~1-2 hrs</div></div>
-      <div class="info"><div class="title">3-Template Automation Toolkit</div>
-        <div class="description">Save 5+ hours per month with automated templates.</div>
-      </div>
-      <div class="footer"><span class="tag">Time Saver</span>
-        <button class="action" onclick="showModal('templates')">Learn More</button>
-      </div>
+    <div class="card"><div class="card-header"><div class="price">$149</div><div class="time-tag">~1-2 hrs</div></div>
+      <div class="info"><div class="title">3-Template Automation Toolkit</div><div class="description">Save 5+ hours per month with automated templates.</div></div>
+      <div class="footer"><span class="tag">Time Saver</span><button class="action" onclick="showModal('templates')">Learn More</button></div>
+    </div>
+    <div class="card"><div class="card-header"><div class="price">$199</div><div class="time-tag">~2 hrs</div></div>
+      <div class="info"><div class="title">3-KPI Clarity Session</div><div class="description">Focus on the 3 metrics that drive profit, not everything else.</div></div>
+      <div class="footer"><span class="tag">Data Focus</span><button class="action" onclick="showModal('kpi-clarity')">Learn More</button></div>
     </div>
   </div>
 
-  <!-- Pricing Grid: Row 2 - Full Diagnosis & Transformation -->
+  <!-- Middle Row: 2 Cards -->
   <div class="pricing-grid">
-    <div class="card">
-      <div class="header"><div class="price">$495</div><div class="time-tag">Deep Analysis</div></div>
-      <div class="info"><div class="title">Profit-Hour Recovery Audit</div>
-        <div class="description">Identify where 25+ hours per month vanish. Get a roadmap to reclaim them.</div>
-      </div>
-      <div class="footer"><span class="tag">Most Popular</span>
-        <button class="action" onclick="showModal('audit')">Learn More</button>
-      </div>
+    <div class="card"><div class="card-header"><div class="price">$495</div><div class="time-tag">Deep Analysis</div></div>
+      <div class="info"><div class="title">Profit-Hour Recovery Audit</div><div class="description">Identify where 25+ hours per month vanish. Get a roadmap to reclaim them.</div></div>
+      <div class="footer"><span class="tag">Most Popular</span><button class="action" onclick="showModal('audit')">Learn More</button></div>
     </div>
-
-    <div class="card">
-      <div class="header"><div class="price">$199</div><div class="time-tag">~2 hrs</div></div>
-      <div class="info"><div class="title">3-KPI Clarity Session</div>
-        <div class="description">Focus on the 3 metrics that drive profit, not everything else.</div>
-      </div>
-      <div class="footer"><span class="tag">Data Focus</span>
-        <button class="action" onclick="showModal('kpi-clarity')">Learn More</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="header"><div class="price">$250</div><div class="time-tag">90 min</div></div>
-      <div class="info"><div class="title">90-Minute Power Session</div>
-        <div class="description">Fix your most annoying task together in real-time. Guaranteed 5+ hours saved.</div>
-      </div>
-      <div class="footer"><span class="tag">Instant Fix</span>
-        <button class="action" onclick="showModal('power-session')">Learn More</button>
-      </div>
+    <div class="card"><div class="card-header"><div class="price">$250</div><div class="time-tag">90 min</div></div>
+      <div class="info"><div class="title">90-Minute Power Session</div><div class="description">Fix your most annoying task together in real-time. Guaranteed 5+ hours saved.</div></div>
+      <div class="footer"><span class="tag">Instant Fix</span><button class="action" onclick="showModal('power-session')">Learn More</button></div>
     </div>
   </div>
 
-  <!-- Full Transformation -->
+  <!-- Bottom Row: 1 Card -->
   <div class="pricing-grid" style="justify-content:center; margin-bottom:80px;">
-    <div class="card" style="width:100%; max-width:700px;">
-      <div class="header"><div class="price">$4K-$8K+</div><div class="time-tag">6-Week Transform</div></div>
-      <div class="info"><div class="title">Workflow Liberation Program</div>
-        <div class="description">Complete system overhaul. Save 120+ hours monthly. Measurable ROI.</div>
-      </div>
-      <div class="footer"><span class="tag">Full Solution</span>
-        <button class="action" onclick="showModal('workflow')">Learn More</button>
-      </div>
+    <div class="card" style="width:100%; max-width:700px;"><div class="card-header"><div class="price">$4K-$8K+</div><div class="time-tag">6-Week Transform</div></div>
+      <div class="info"><div class="title">Workflow Liberation Program</div><div class="description">Complete system overhaul. Save 120+ hours monthly. Measurable ROI.</div></div>
+      <div class="footer"><span class="tag">Full Solution</span><button class="action" onclick="showModal('workflow')">Learn More</button></div>
     </div>
   </div>
 
@@ -140,8 +113,8 @@
     <h2>Your Journey to Freedom</h2>
     <p>Most clients follow this path — starting small, building trust, then transforming everything.</p>
     <div class="journey-steps">
-      <div class="journey-step"><div class="step-number">1</div><h3>Quick Win</h3><p><strong>State:</strong> Skeptical</p><p>Start with low-risk audits or toolkits to see immediate results.</p><div class="price-tag">$99 - $149</div></div>
-      <div class="journey-step"><div class="step-number">2</div><h3>Full Diagnosis</h3><p><strong>State:</strong> Acknowledges problem</p><p>Discover the scale and cost of inefficiencies in your operation.</p><div class="price-tag">$195 - $495</div></div>
+      <div class="journey-step"><div class="step-number">1</div><h3>Quick Win</h3><p><strong>State:</strong> Skeptical</p><p>Start with low-risk audits or toolkits to see immediate results.</p><div class="price-tag">$99 - $199</div></div>
+      <div class="journey-step"><div class="step-number">2</div><h3>Full Diagnosis</h3><p><strong>State:</strong> Acknowledges problem</p><p>Discover the scale and cost of inefficiencies in your operation.</p><div class="price-tag">$250 - $495</div></div>
       <div class="journey-step"><div class="step-number">3</div><h3>Complete Transformation</h3><p><strong>State:</strong> Ready to solve it</p><p>Systematic overhaul saving 120+ hours monthly with measurable ROI.</p><div class="price-tag">$4K - $8K+</div></div>
     </div>
   </div>
@@ -158,6 +131,15 @@
     <button class="close-btn" onclick="closeModal()">Close</button>
   </div>
 </div>
+
+<!-- Footer -->
+<footer>
+  <p>DGS Consulting<br>
+    <a href="https://dgsconsulting.solutions/" target="_blank" class="footer-button">Visit Website</a> 
+    <a href="https://www.linkedin.com/in/dg-snook/" target="_blank" class="footer-button">LinkedIn</a> 
+    <a href="mailto:DGSConsult@consultant.com" class="footer-button">Contact</a>
+  </p>
+</footer>
 
 <script>
 const serviceDetails = {
@@ -178,6 +160,15 @@ function showModal(id){
   document.getElementById('serviceModal').style.display='block';
 }
 function closeModal(e){if(!e||e.target.classList.contains('modal'))document.getElementById('serviceModal').style.display='none';}
+
+// Scroll-triggered hover effect
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting) entry.target.classList.add('visible');
+  });
+},{ threshold:0.25 });
+
+document.querySelectorAll('.card').forEach(card=>observer.observe(card));
 </script>
 </body>
 </html>
