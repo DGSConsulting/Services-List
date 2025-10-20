@@ -6,19 +6,18 @@
 <title>DGS Consulting - Pricing</title>
 <style>
 * {margin:0;padding:0;box-sizing:border-box;}
-body {font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;
-      background: linear-gradient(135deg,#0f766e 0%,#14b8a6 100%);
-      color:#333;line-height:1.6;padding:40px 20px;min-height:100vh;}
+body {font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;background: linear-gradient(135deg,#0f766e 0%,#14b8a6 100%);color:#333;line-height:1.6;padding:40px 20px;min-height:100vh;}
 .container {max-width:1400px;margin:0 auto;}
 header {text-align:center;margin-bottom:60px;color:white;}
 header h1 {font-size:3em;margin-bottom:15px;font-weight:700;}
 header p {font-size:1.3em;opacity:0.95;}
 .pricing-grid {display:flex;flex-wrap:wrap;gap:30px;justify-content:center;margin-bottom:60px;}
-.card {display:flex;flex-direction:column;justify-content:space-between;border-radius:0.75rem;background-color:white;width:300px;height:370px;box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);transition: transform 0.3s ease, box-shadow 0.3s ease;cursor:pointer;}
-.card:hover {transform:translateY(-10px);box-shadow:0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1);}
-.header {position:relative;background-clip:border-box;margin:1.5rem 1rem 0 1rem;border-radius:0.75rem;background-color:#0f766e;box-shadow:0 10px 15px -3px rgba(15,118,110,.4),0 4px 6px -4px rgba(15,118,110,.4);height:14rem;display:flex;flex-direction:column;justify-content:center;align-items:center;color:white;padding:1rem;}
-.header.featured {background: linear-gradient(135deg,#0f766e 0%,#14b8a6 100%);box-shadow:0 10px 15px -3px rgba(20,184,166,.4),0 4px 6px -4px rgba(20,184,166,.4);}
-.header.premium {background: linear-gradient(135deg,#4ade80 0%,#22c55e 100%);box-shadow:0 10px 15px -3px rgba(34,197,94,.4),0 4px 6px -4px rgba(34,197,94,.4);}
+.card {display:flex;flex-direction:column;justify-content:space-between;border-radius:0.75rem;background-color:white;width:300px;height:370px;box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);cursor:pointer;transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease, opacity 0.6s;opacity:0;transform:translateY(30px);}
+.card.in-view {opacity:1;transform:translateY(0);}
+.card:hover {transform:translateY(-10px);box-shadow:0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1);border:2px solid #14b8a6;}
+.header {position:relative;background-clip:border-box;margin:1.5rem 1rem 0 1rem;border-radius:0.75rem;background-color:#0f766e;box-shadow:0 10px 15px -3px rgba(15,118,110,.4),0 4px 6px -4px rgba(15,118,110,.4);height:14rem;display:flex;flex-direction:column;justify-content:center;align-items:center;color:white;padding:1rem;transition: background 0.3s ease;}
+.header.featured {background: linear-gradient(135deg,#0f766e 0%,#14b8a6 100%);}
+.header.premium {background: linear-gradient(135deg,#4ade80 0%,#22c55e 100%);}
 .price {font-size:3em;font-weight:800;margin-bottom:0.5rem;}
 .price-range {font-size:2em;font-weight:800;}
 .time-tag {font-size:0.85em;opacity:0.9;font-weight:300;}
@@ -34,7 +33,8 @@ header p {font-size:1.3em;opacity:0.95;}
 .journey-section {background:white;border-radius:20px;padding:50px 40px;margin-top:60px;box-shadow:0 10px 40px rgba(0,0,0,0.1);}
 .journey-section h2 {text-align:center;font-size:2.5em;margin-bottom:40px;color:#2d3748;}
 .journey-steps {display:flex;flex-wrap:wrap;gap:40px;justify-content:center;margin-top:40px;}
-.journey-step {text-align:center;padding:30px;border-radius:15px;background:#f7fafc;transition:transform 0.3s ease;max-width:350px;}
+.journey-step {text-align:center;padding:30px;border-radius:15px;background:#f7fafc;transition:transform 0.3s ease,opacity 0.6s;opacity:0;transform:translateY(30px);max-width:350px;}
+.journey-step.in-view {opacity:1;transform:translateY(0);}
 .journey-step:hover {transform:translateY(-5px);}
 .step-number {width:60px;height:60px;background:linear-gradient(135deg,#0f766e 0%,#14b8a6 100%);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8em;font-weight:bold;margin:0 auto 20px;}
 .journey-step h3 {font-size:1.4em;margin-bottom:10px;color:#2d3748;}
@@ -65,6 +65,7 @@ header p {font-size:1.3em;opacity:0.95;}
 </header>
 
 <div class="pricing-grid">
+<!-- Pricing cards -->
 <div class="card" onclick="scrollToConsultation('tech-audit')">
 <div class="header"><div class="price">$99</div><div class="time-tag">~1 hour</div></div>
 <div class="info"><div class="title">Tech Stack Red Flag Audit</div><div class="description">Stop paying for redundant software. Get 3 immediate fixes + subscription savings.</div></div>
@@ -102,6 +103,7 @@ header p {font-size:1.3em;opacity:0.95;}
 </div>
 </div>
 
+<!-- Journey Section -->
 <div class="journey-section">
 <h2>Your Journey to Freedom</h2>
 <p style="text-align:center;color:#718096;font-size:1.2em;margin-bottom:20px;">Most clients follow this path — starting small, building trust, then transforming everything.</p>
@@ -113,7 +115,6 @@ header p {font-size:1.3em;opacity:0.95;}
 <p>Start with a low-risk audit or toolkit to see immediate results and build trust.</p>
 <div class="price-tag">$99 - $199</div>
 </div>
-
 <div class="journey-step">
 <div class="step-number">2</div>
 <h3>Full Diagnosis</h3>
@@ -121,7 +122,6 @@ header p {font-size:1.3em;opacity:0.95;}
 <p>Discover the true scale and cost of inefficiencies across your entire operation.</p>
 <div class="price-tag">$250 - $495</div>
 </div>
-
 <div class="journey-step">
 <div class="step-number">3</div>
 <h3>Complete Transformation</h3>
@@ -132,6 +132,7 @@ header p {font-size:1.3em;opacity:0.95;}
 </div>
 </div>
 
+<!-- Consultation Form -->
 <div id="consultation">
 <h2 style="text-align:center;color:#0f766e;margin-bottom:20px;">Book Your Consultation</h2>
 <form action="https://formspree.io/f/xldpkrpb" method="POST">
@@ -141,6 +142,7 @@ header p {font-size:1.3em;opacity:0.95;}
 </form>
 </div>
 
+<!-- Modal -->
 <div id="serviceModal" class="modal" onclick="closeModal(event)">
 <div class="modal-content" onclick="event.stopPropagation()">
 <div id="modalBody"></div>
@@ -161,9 +163,15 @@ const serviceDetails = {
 function showModal(id){
 const service=serviceDetails[id];const modalBody=document.getElementById('modalBody');
 let html=`<h3>${service.title}</h3><div class="modal-body"><p><strong>Pain:</strong> ${service.pain}</p><p><strong>Promise:</strong> ${service.promise}</p><h4>Deliverables:</h4><ul>`;
-service.deliverables.forEach(d=>{html+=`<li>${d}</li>`;});html+=`</ul><p><strong>Upsell:</strong> ${service.upsell}</p></div>`;modalBody.innerHTML=html;document.getElementById('serviceModal').style.display='block';}
+service.deliverables.forEach(d=>{html+=`<li>${d}</li>`});html+=`</ul><p><strong>Upsell:</strong> ${service.upsell}</p></div>`;modalBody.innerHTML=html;document.getElementById('serviceModal').style.display='block';
+}
 function closeModal(e){if(e){if(e.target.id==='serviceModal'){document.getElementById('serviceModal').style.display='none';}}else{document.getElementById('serviceModal').style.display='none';}}
 function scrollToConsultation(id){document.getElementById('consultation').scrollIntoView({behavior:'smooth'});}
+
+// Scroll fade-in animations
+const cards=document.querySelectorAll('.card,.journey-step');
+const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in-view');}})},{threshold:0.2});
+cards.forEach(card=>observer.observe(card));
 </script>
 </body>
 </html>
